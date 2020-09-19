@@ -19,7 +19,6 @@ class CreateClientesTable extends Migration
             $table->string('telefone', 12);
             $table->date('dataNascimento');
             $table->timestamps();
-
         });
     }
 

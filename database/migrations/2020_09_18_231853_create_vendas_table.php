@@ -15,10 +15,16 @@ class CreateVendasTable extends Migration
     {
         Schema::create('vendas', function (Blueprint $table) {
             $table->id();
-            $table->date('data');
+            $table->dateTime('data');
             $table->decimal('total', 10, 2);
             $table->boolean('fiado');
             $table->timestamps();
+
+            $table->integer('funcionario_id')->unsigned();
+            $table->foreign('funcionario_id')->references('id')->on('funcionarios');
+
+            $table->integer('cliente_id')->unsigned();
+            $table->foreign('cliente_id')->references('id')->on('clientes');
 
         });
     }
