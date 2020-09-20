@@ -10,9 +10,13 @@ class Venda extends Model
     use HasFactory;
 
     public function funcionario(){
-        return $this->belongsTo('projeto\Funcionario');
+        return $this->belongsTo('App\Models\Funcionario');
     }
     public function cliente(){
-        return $this->belongsTo('projeto\Cliente');
+        return $this->belongsTo('App\Models\Cliente');
+    }
+
+    public function produtos(){
+        return $this->belongsToMany('App\Models\Produto');
     }
 }

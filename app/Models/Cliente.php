@@ -10,9 +10,9 @@ class Cliente extends Model
     use HasFactory;
 
     public function endereco(){
-        return $this->hasOne('projeto\Endereco');
+        return $this->hasOne('App\Models\Endereco');
     }
     public function vendas(){
-        return $this->hasMany('projeto\Venda');
+        return $this->hasMany('App\Models\Venda');
     }
 }

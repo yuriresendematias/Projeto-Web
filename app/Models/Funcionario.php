@@ -9,6 +9,6 @@ class Funcionario extends Model
 {
     use HasFactory;
     public function vendas(){
-        return $this->hasMany('projeto\Venda');
+        return $this->hasMany('App\Models\Venda');
     }
 }
