@@ -17,8 +17,8 @@ class CreateEnderecosTable extends Migration
             $table->id();
             $table->string('logradouro', 100);
             $table->string('numero', 10);
-            $table->string('bairro', 20);
-            $table->string('cidade', 20);
+            $table->string('bairro', 30);
+            $table->string('cidade', 30);
             $table->string('pontoReferencia', 30);
             $table->timestamps();
 

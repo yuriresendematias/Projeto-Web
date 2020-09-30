@@ -17,7 +17,7 @@ class CreateFuncionariosTable extends Migration
             $table->id();
             $table->string('nome', 100);
             $table->string('cpf', 11);
-            $table->string('email', 30);
+            $table->string('email', 50);
             $table->timestamps();
         });
     }
