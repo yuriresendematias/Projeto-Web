@@ -11,6 +11,11 @@ use App\Models\Funcionario;
 use App\Http\Controllers\ListarFuncionariosController as ListarFuncionarios;
 use App\Http\Controllers\CadastrarFuncionarioController as CadastrarFuncionario;
 
+
+use App\Models\Produto;
+use App\Http\Controllers\ListarProdutosController as ListarProdutos;
+use App\Http\Controllers\CadastrarProdutoController as CadastrarProduto;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,3 +45,10 @@ Route::get('/cadastrarFuncionario', function (Request $request) {
     return view('cadastroFuncionario');
 });
 Route::post('/cadastrarFuncionario', [CadastrarFuncionario::class, 'cadastrar']);
+
+//Produto
+Route::get('/listaProdutos', [ListarProdutos::class, 'listar']);
+Route::get('/cadastrarProduto', function (Request $request) {
+    return view('cadastroProduto');
+});
+Route::post('/cadastrarProduto', [CadastrarProduto::class, 'cadastrar']);
