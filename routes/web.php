@@ -16,6 +16,10 @@ use App\Models\Produto;
 use App\Http\Controllers\ListarProdutosController as ListarProdutos;
 use App\Http\Controllers\CadastrarProdutoController as CadastrarProduto;
 
+use App\Models\Endereco;
+use App\Http\Controllers\ListarEnderecosController as ListarEnderecos;
+use App\Http\Controllers\CadastrarEnderecoController as CadastrarEndereco;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,3 +56,11 @@ Route::get('/cadastrarProduto', function (Request $request) {
     return view('cadastroProduto');
 });
 Route::post('/cadastrarProduto', [CadastrarProduto::class, 'cadastrar']);
+
+
+//Endereco
+Route::get('/listaEnderecos', [ListarEnderecos::class, 'listar']);
+Route::get('/cadastrarEndereco', function (Request $request) {
+    return view('cadastroEndereco');
+});
+Route::post('/cadastrarEndereco', [CadastrarEndereco::class, 'cadastrar']);

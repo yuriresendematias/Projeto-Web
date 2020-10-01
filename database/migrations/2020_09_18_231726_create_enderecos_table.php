@@ -19,7 +19,7 @@ class CreateEnderecosTable extends Migration
             $table->string('numero', 10);
             $table->string('bairro', 30);
             $table->string('cidade', 30);
-            $table->string('pontoReferencia', 30);
+            $table->string('pontoReferencia', 30); //opcional
             $table->timestamps();
 
             $table->integer('cliente_id')->unsigned();
