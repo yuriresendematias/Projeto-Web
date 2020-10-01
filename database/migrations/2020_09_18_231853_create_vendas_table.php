@@ -15,7 +15,7 @@ class CreateVendasTable extends Migration
     {
         Schema::create('vendas', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('data');
+            $table->date('data'); // necessário?
             $table->decimal('total', 10, 2);
             $table->boolean('fiado');
             $table->timestamps();

@@ -20,6 +20,10 @@ use App\Models\Endereco;
 use App\Http\Controllers\ListarEnderecosController as ListarEnderecos;
 use App\Http\Controllers\CadastrarEnderecoController as CadastrarEndereco;
 
+use App\Models\Venda;
+use App\Http\Controllers\ListarVendasController as ListarVendas;
+use App\Http\Controllers\CadastrarVendaController as CadastrarVenda;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,7 +40,7 @@ Route::get('/', function () {
 });
 
 //Cliente
-//Route::get('/clientes', [Cliente::class, 'all']);
+Route::get('/clientes', [Cliente::class, 'all']);
 Route::get('/listaClientes', [ListarClientes::class, 'listar']);
 Route::get('/cadastrarCliente', function (Request $request) {
     return view('cadastroCliente');
@@ -57,10 +61,16 @@ Route::get('/cadastrarProduto', function (Request $request) {
 });
 Route::post('/cadastrarProduto', [CadastrarProduto::class, 'cadastrar']);
 
-
 //Endereco
 Route::get('/listaEnderecos', [ListarEnderecos::class, 'listar']);
 Route::get('/cadastrarEndereco', function (Request $request) {
     return view('cadastroEndereco');
 });
 Route::post('/cadastrarEndereco', [CadastrarEndereco::class, 'cadastrar']);
+
+//Venda
+Route::get('/listaVendas', [ListarVendas::class, 'listar']);
+Route::get('/cadastrarVenda', function (Request $request) {
+    return view('cadastroVenda');
+});
+Route::post('/cadastrarVenda', [CadastrarVenda::class, 'cadastrar']);
