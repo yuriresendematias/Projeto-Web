@@ -9,7 +9,7 @@ use App\Models\Funcionario;
 class ListarFuncionariosController extends Controller
 {
     public function listar() {
-        $funcionarios = DB::select("select * from funcionarios");
+        $funcionarios = Funcionario::all();
         return view('listaFuncionarios', ['funcionarios' => $funcionarios]);
     }
 }

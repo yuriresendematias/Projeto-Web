@@ -9,7 +9,7 @@ use App\Models\Produto;
 class ListarProdutosController extends Controller
 {
     public function listar() {
-        $produtos = DB::select("select * from produtos");
+        $produtos = Produto::all();
         return view('listaProdutos', ['produtos' => $produtos]);
     }
 }
