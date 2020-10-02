@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Clientes;
+use App\Models\Cliente;
 
 class ListarClientesController extends Controller
 {
     public function listar() {
-        $clientes = DB::select("select * from clientes");
+        
+        $clientes = Cliente::all();
         return view('listaClientes', ['clientes' => $clientes]);
     }
 }

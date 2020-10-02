@@ -9,7 +9,7 @@ use App\Models\Venda;
 class ListarVendasController extends Controller
 {
     public function listar() {
-        $vendas = DB::select("select * from vendas");
+        $vendas = Venda::all();
         return view('listaVendas', ['vendas' => $vendas]);
     }
 }
