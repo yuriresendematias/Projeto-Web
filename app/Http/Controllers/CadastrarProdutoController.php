@@ -7,6 +7,10 @@ use App\Models\Produto;
 
 class CadastrarProdutoController extends Controller
 {
+    public function criar(){
+        return view('cadastroProduto');
+    }
+
     public function cadastrar(Request $request){
         try {
             \App\Validator\ProdutoValidator::validate($request->all());

@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class CadastrarVendaController extends Controller
 {
+    public function criar(){
+        return view('cadastroVenda');
+    }
+
     public function cadastrar(Request $request){
         try {
             \App\Validator\VendaValidator::validate($request->all());

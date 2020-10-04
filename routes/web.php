@@ -40,41 +40,31 @@ Route::get('/', function () {
 });
 
 
-Route::middleware('auth')->group(function(){
-    //Cliente
-    Route::get('/clientes', [Cliente::class, 'all']);
-    Route::get('/listaClientes', [ListarClientes::class, 'listar']);
-    Route::get('/cadastrarCliente', function (Request $request) {
-        return view('cadastroCliente');
-    });
-    Route::post('/cadastrarCliente', [CadastrarCliente::class, 'cadastrar']);
 
+Route::middleware('auth')->group(function(){
     //Funcionário
     Route::get('/listaFuncionarios', [ListarFuncionarios::class, 'listar']);
-    Route::get('/cadastrarFuncionario', function (Request $request) {
-        return view('cadastroFuncionario');
-    });
+    Route::get('/cadastrarFuncionario', [CadastrarFuncionario::class, 'criar']);
     Route::post('/cadastrarFuncionario', [CadastrarFuncionario::class, 'cadastrar']);
+
+    //Cliente
+    Route::get('/listaClientes', [ListarClientes::class, 'listar']);
+    Route::get('/cadastrarCliente', [CadastrarCliente::class, 'criar']);
+    Route::post('/cadastrarCliente', [CadastrarCliente::class, 'cadastrar']);    
 
     //Produto
     Route::get('/listaProdutos', [ListarProdutos::class, 'listar']);
-    Route::get('/cadastrarProduto', function (Request $request) {
-        return view('cadastroProduto');
-    });
+    Route::get('/cadastrarProduto', [CadastrarProduto::class, 'criar']);
     Route::post('/cadastrarProduto', [CadastrarProduto::class, 'cadastrar']);
 
     //Endereco
     Route::get('/listaEnderecos', [ListarEnderecos::class, 'listar']);
-    Route::get('/cadastrarEndereco', function (Request $request) {
-        return view('cadastroEndereco');
-    });
+    Route::get('/cadastrarEndereco', [CadastrarEndereco::class, 'criar']);
     Route::post('/cadastrarEndereco', [CadastrarEndereco::class, 'cadastrar']);
 
     //Venda
     Route::get('/listaVendas', [ListarVendas::class, 'listar']);
-    Route::get('/cadastrarVenda', function (Request $request) {
-        return view('cadastroVenda');
-    });
+    Route::get('/cadastrarVenda', [CadastrarVenda::class, 'criar']);
     Route::post('/cadastrarVenda', [CadastrarVenda::class, 'cadastrar']);
 });
 
