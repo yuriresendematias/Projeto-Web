@@ -18,6 +18,8 @@ class CreateFuncionariosTable extends Migration
             $table->string('nome', 100);
             $table->string('cpf', 11);
             $table->string('email', 50);
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

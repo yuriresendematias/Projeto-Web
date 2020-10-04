@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Funcionario;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class FuncionarioFactory extends Factory
@@ -26,6 +27,7 @@ class FuncionarioFactory extends Factory
             'nome' => $this->faker->name,
             'cpf' => $this->faker->cpf(false),
             'email' => $this->faker->unique()->safeEmail,
+            'password' => Hash::make('12341234'),
         ];
     }
 }

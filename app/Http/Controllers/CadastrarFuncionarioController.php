@@ -4,16 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Funcionario;
+use \App\Validator\FuncionarioValidator;
+use \App\Validator\ValidationException;
+use Illuminate\Support\Facades\Hash;
+
+
 
 class CadastrarFuncionarioController extends Controller
 {
+    public function criar(){
+        return view('cadastroFuncionario');
+    }
+
     public function cadastrar(Request $request){
         try {
-            \App\Validator\FuncionarioValidator::validate($request->all());
+            FuncionarioValidator::validate($request->all());
             $dados = $request->all();
-            \App\Models\Funcionario::create($dados);
-            return redirect("/listaFuncionarios");
-        } catch(\App\Validator\ValidationException $exception) {
+            Funcionario::create([
+                'nome' => $dados['nome'],
+                'email' => $dados['email'],
+                'cpf' => $dados['cpf'],
+                'password' => Hash::make($dados['password']),
+            ]);
+            return redirect("listaFuncionarios");
+        } catch(ValidationException $exception) {
             return redirect('cadastrarFuncionario')->withErrors($exception->getValidator())->withInput();
         }
     }

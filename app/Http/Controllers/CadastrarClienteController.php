@@ -7,6 +7,11 @@ use App\Models\Cliente;
 
 class CadastrarClienteController extends Controller
 {
+
+    public function criar(){
+        return view('cadastroCliente');
+    }
+
     public function cadastrar(Request $request){
         try {
             \App\Validator\ClienteValidator::validate($request->all());

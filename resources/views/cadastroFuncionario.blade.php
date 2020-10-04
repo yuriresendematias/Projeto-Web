@@ -14,6 +14,22 @@
 
             Email: <input id="email" type="text" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autofocus />
 
+            Senha: <input id="password" type="password" name="password" class="form-control @error('password') is-invalid @enderror" required autofocus />
+
+            Confirmar senha: <input id="password_confirmation" type="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" required autofocus />
+
+            @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
+            @error('password_confirmation')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
             @error('nome')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

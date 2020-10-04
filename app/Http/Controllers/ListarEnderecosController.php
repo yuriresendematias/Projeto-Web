@@ -9,7 +9,7 @@ use App\Models\Endereco;
 class ListarEnderecosController extends Controller
 {
     public function listar() {
-        $enderecos = DB::select("select * from enderecos");
+        $enderecos = Endereco::all();
         return view('listaEnderecos', ['enderecos' => $enderecos]);
     }
 }
