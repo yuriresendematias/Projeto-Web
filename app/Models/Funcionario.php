@@ -26,6 +26,6 @@ class Funcionario extends Authenticatable
         'nome.*' => 'Nome é obrigatório e deve ter entre 5 e 100 caracteres',
         'cpf.*' => 'CPF inválido',
         'email.*' => 'E-mail é inválido',
-        'password.*' => 'Senha é obrigatório e deve ter pelo menos 8 caracteres',
+        'password.*' => 'Senha e obrigatorio e deve ter pelo menos 8 caracteres',
     ];
 }
