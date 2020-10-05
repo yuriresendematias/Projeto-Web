@@ -17,7 +17,6 @@ class FuncionarioTest extends TestCase
     public function testFuncionarioLogadoPodeVerAListaDeClietes()
     {
         $funcionario = Funcionario::factory()->make();
-        $funcionario->password = 'password';
         $funcionario->save();
         $funcionario = Funcionario::all()->first();
         $response = $this->actingAs($funcionario)->get('/listaClientes')->assertStatus(200);

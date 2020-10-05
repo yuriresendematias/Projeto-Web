@@ -29,7 +29,6 @@ class FuncionarioFactory extends Factory
             'cpf' => $this->faker->cpf(false),
             'email' => $this->faker->unique()->safeEmail,
             'password' => Hash::make('12341234'),
-            'remember_token' => Str::random(10),
             'remember_token' => $this->faker->lexify('??????????'),
         ];
     }

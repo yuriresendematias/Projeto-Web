@@ -14,18 +14,21 @@ class LoginTest extends DuskTestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testLoginValido()
     {
         $funcionario = Funcionario::first();
-
-        $this->browse(function (Browser $browser) use ($funcionario) {
-            $browser->visit('/login')
-                    //->type('email', $funcionario->email)
-                    //->type('password', '123411234')
-                    ->pause(200)
-                    //->press('LOGIN')
+        $this->browse(function ($browser) use ($funcionario) {
+            $browser->visit('/')
+                    ->screenshot('home')
+                    ->visit('/login')
+                    ->screenshot('login_')
                     ->assertSee('Login')
-                    ->pause(200);
+                    ->type('email', $funcionario->email)
+                    ->type('password', '12341234')
+                    ->screenshot('login')
+                    ->press('Login')
+                    ->screenshot('dasboard')
+                    ->assertPathIs('/home');
 
         });
     }
