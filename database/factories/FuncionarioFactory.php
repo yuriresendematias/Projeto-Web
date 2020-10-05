@@ -6,6 +6,7 @@ use App\Models\Funcionario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Faker\Generator as Faker;
 
 class FuncionarioFactory extends Factory
 {
@@ -28,6 +29,8 @@ class FuncionarioFactory extends Factory
             'cpf' => $this->faker->cpf(false),
             'email' => $this->faker->unique()->safeEmail,
             'password' => Hash::make('12341234'),
+            'remember_token' => Str::random(10),
+            'remember_token' => $this->faker->lexify('??????????'),
         ];
     }
 }
