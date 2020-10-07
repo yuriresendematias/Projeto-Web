@@ -50,7 +50,7 @@ Route::middleware('auth')->group(function(){
     //Cliente
     Route::get('/listaClientes', [ListarClientes::class, 'listar']);
     Route::get('/cadastrarCliente', [CadastrarCliente::class, 'criar']);
-    Route::post('/cadastrarCliente', [CadastrarCliente::class, 'cadastrar']);    
+    Route::post('/cadastrarCliente', [CadastrarCliente::class, 'cadastrar']);
 
     //Produto
     Route::get('/listaProdutos', [ListarProdutos::class, 'listar']);
