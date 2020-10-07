@@ -62,11 +62,14 @@ Route::middleware('auth')->group(function(){
     Route::get('/cadastrarEndereco', [CadastrarEndereco::class, 'criar']);
     Route::post('/cadastrarEndereco', [CadastrarEndereco::class, 'cadastrar']);
 
-    //Venda
-    Route::get('/listaVendas', [ListarVendas::class, 'listar']);
-    Route::get('/cadastrarVenda', [CadastrarVenda::class, 'criar']);
-    Route::post('/cadastrarVenda', [CadastrarVenda::class, 'cadastrar']);
+   
 });
+
+//Venda
+Route::get('/cadastrarVenda', [CadastrarVenda::class, 'criar']);
+Route::get('/listaVendas', [ListarVendas::class, 'listar']);
+Route::post('/cadastrarVenda', [CadastrarVenda::class, 'cadastrar']);
+Route::post('/adicionarItemVenda', [CadastrarVenda::class], 'adicionarItem');
 
 Auth::routes();
 

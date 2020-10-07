@@ -1,49 +1,75 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <title>Cadastro Venda</title>
-    </head>
-    <body>
-        <h1>Cadastrar Venda</h1>
-        <form action="/cadastrarVenda" method="post">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+@extends('layouts.app')
 
-            Valor total: <input id="total" type="text" name="total" class="form-control @error('total') is-invalid @enderror" value="{{ old('total') }}" required autofocus />
+@section('content')
 
-            Data: <input id="data" type="text" name="data" class="form-control @error('data') is-invalid @enderror" value="{{ old('data') }}" required autofocus />
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">{{ __('Nova Venda') }}</div>
+                <div class="card-body">
+                    <form method="POST" action="/adicionarItemVenda">
+                        @csrf
 
-            Fiado: <input id="fiado" type="text" name="fiado" class="form-control @error('fiado') is-invalid @enderror" value="{{ old('fiado') }}" required autofocus />
+                        <div class="form-group col-12">
+                            <div class="row">
+                                <div class="col-1">
+                                    <label for="Cliente" class="col-form-label">{{ __('Cliente:') }}</label>
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" name="cliente" placeholder="Nome do cliente" class="form-control" value="{{ $filters['filter'] ?? '' }}">
+                                </div>
+                            </div>
 
-            Funcionario_id: <input id="funcionario_id" type="text" name="funcionario_id" class="form-control @error('funcionario_id') is-invalid @enderror" value="{{ old('funcionario_id') }}" required autofocus />
+                            <div class="row">
+                                <div class="col-1">
+                                    <label for="Produto" class="col-form-label">{{ __('Produto:')}}</label>
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" name="produto" placeholder="Produto" class="form-control" value="{{ $filters['filter_product'] ?? ''}}">
+                                </div>
+                                    <button type="submit" class="btn btn-outline-success">Adicionar</button>
+                            </div>
+                        </div>
+                    </form>
 
-            Cliente_id: <input id="cliente_id" type="text" name="cliente_id" class="form-control @error('cliente_id') is-invalid @enderror" value="{{ old('cliente_id') }}" required autofocus />
+                    <div class="card col-md-12">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th> Imagem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($produtos as $produto)
+                                    <tr>
+                                        <td>{{$produto->nome}}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <div class="pagination justify-content-center">
+                            {!! $produtos->links() !!}
+                        </div>
+                    </div>
+                    
+                    <form action="POST" action="/cadastrarVenda">
+                        @csrf
+                        <div class="btn col-md-12">
+                            <button type="submit" class="btn btn-success md-6">Finalizar</button>
+                            <button type="submit" class="btn btn-danger md-6">Finalizar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-            @error('total')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-            @error('data')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-            @error('fiado')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-            @error('funcionario_id')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-            @error('cliente_id')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-            <input type="submit" value="Cadastrar" />
-        </form>
-    </body>
-</html>
+@endsection
+
+
+
+
+
+

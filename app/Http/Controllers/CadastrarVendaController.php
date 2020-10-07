@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Produto;
 
 class CadastrarVendaController extends Controller
 {
+    public function adicionarItem(Request $request){
+        dd($request);
+    }
+
     public function criar(){
-        return view('cadastroVenda');
+        $produtos = Produto::orderby('nome')->paginate(5);
+        return view('cadastroVenda', ['produtos' => $produtos]);
     }
 
     public function cadastrar(Request $request){
