@@ -11,7 +11,7 @@ class Cliente extends Model
     //use Notifiable;
 
     public function endereco(){
-        return $this->hasOne('App\Models\Endereco');
+        return $this->hasOne('App\Models\Endereco')->onDelete('cascade');;
     }
     public function vendas(){
         return $this->hasMany('App\Models\Venda');

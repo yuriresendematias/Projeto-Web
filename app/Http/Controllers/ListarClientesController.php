@@ -9,8 +9,12 @@ use App\Models\Cliente;
 class ListarClientesController extends Controller
 {
     public function listar() {
-        
         $clientes = Cliente::all();
         return view('listaClientes', ['clientes' => $clientes]);
+    }
+
+    public function exibir($id) {
+        $cliente = Cliente::findOrFail($id);
+        return view('exibirCliente', ['cliente' => $cliente]);
     }
 }

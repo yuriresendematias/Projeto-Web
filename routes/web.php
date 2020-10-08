@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Http\Controllers\ListarClientesController as ListarClientes;
 use App\Http\Controllers\CadastrarClienteController as CadastrarCliente;
+use App\Http\Controllers\EditarClienteController as EditarCliente;
+use App\Http\Controllers\DeletarClienteController as DeletarCliente;
 
 use App\Models\Funcionario;
 use App\Http\Controllers\ListarFuncionariosController as ListarFuncionarios;
@@ -49,8 +51,13 @@ Route::middleware('auth')->group(function(){
 
     //Cliente
     Route::get('/listaClientes', [ListarClientes::class, 'listar']);
+    Route::get('/cliente/{id}', [ListarClientes::class, 'exibir']);
     Route::get('/cadastrarCliente', [CadastrarCliente::class, 'criar']);
     Route::post('/cadastrarCliente', [CadastrarCliente::class, 'cadastrar']);
+    Route::get('/editarCliente/{id}', [EditarCliente::class, 'editar']);
+    Route::post('/editarCliente/{id}', [EditarCliente::class, 'atualizar']);
+    Route::get('/deletarCliente/{id}', [DeletarCliente::class, 'deletar']);
+    Route::post('/deletarCliente/{id}', [DeletarCliente::class, 'excluir']);
 
     //Produto
     Route::get('/listaProdutos', [ListarProdutos::class, 'listar']);
