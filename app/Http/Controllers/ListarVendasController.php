@@ -7,7 +7,7 @@ use App\Models\Venda;
 class ListarVendasController extends Controller
 {
     public function listar() {
-        $vendas = Venda::all();
+        $vendas = Venda::orderby('created_at')->paginate(15);
         return view('listaVendas', ['vendas' => $vendas]);
     }
 }
