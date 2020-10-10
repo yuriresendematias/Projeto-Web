@@ -20,11 +20,10 @@ class Venda extends Model
         return $this->belongsToMany('App\Models\Produto');
     }
 
-    protected $fillable = ['total', 'data', 'fiado', 'funcionario_id', 'cliente_id'];
+    protected $fillable = ['total', 'fiado', 'funcionario_id', 'cliente_id'];
 
     public static $rules = [
         'total' => 'required|gt:0',
-        'data' => ['required', 'date'],
         'fiado' => 'required|boolean',
         'funcionario_id' => 'required',
         'cliente_id' => 'required',
@@ -32,7 +31,6 @@ class Venda extends Model
 
     public static $messages = [
         'total.*' => 'total é obrigatório e deve ser maior que 0',
-        'data.*' => 'Data inválida',
         'fiado.*' => 'Fiado é obrigatório e deve ser booleano',
         'funcionario_id.*' => 'Funcionario deve estar relacionado a uma Venda',
         'cliente_id.*' => 'Cliente deve estar relacionado a uma Venda',
