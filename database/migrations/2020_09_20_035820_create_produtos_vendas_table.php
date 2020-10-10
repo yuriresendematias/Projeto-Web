@@ -16,6 +16,7 @@ class CreateProdutosVendasTable extends Migration
         Schema::create('produtos_vendas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('quantidade');
 
             $table->integer('produto_id')->unsigned();
             $table->foreign('produto_id')->references('id')->on('produtos');

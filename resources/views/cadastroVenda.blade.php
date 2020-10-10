@@ -14,21 +14,25 @@
                         <div class="form-group col-12">
                             <div class="row">
                                 <div class="col-1">
-                                    <label for="Cliente" class="col-form-label">{{ __('Cliente:') }}</label>
-                                </div>
-                                <div class="col-6">
-                                    <input type="text" name="cliente" placeholder="Nome do cliente" class="form-control" value="{{ $filters['filter'] ?? '' }}">
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-1">
                                     <label for="Produto" class="col-form-label">{{ __('Produto:')}}</label>
                                 </div>
                                 <div class="col-6">
-                                    <input type="text" name="produto" placeholder="Produto" class="form-control" value="{{ $filters['filter_product'] ?? ''}}">
+                                    <select id="produto_id" class="form-control" name="produto_id">
+                                        @foreach ($produtos as $produto)
+                                            <option value="{{$produto->id}}">{{$produto->nome}} 
+                                                                            ( quantidade = {{$produto->quantidade}}
+                                                                            / validade = {{$produto->validade}})</option>
+                                        @endforeach                              
+                                    </select>
                                 </div>
-                                    <button type="submit" class="btn btn-outline-success">Adicionar</button>
+                                <div class="col-1">
+                                    <label for="quantidade" class="col-form-label">Quantidade: </label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" class="form-control col-7" name="quantidade">
+                                </div>
+                                
+                                <button type="submit" class="btn btn-outline-success">Adicionar</button>
                             </div>
                         </div>
                     </form>
@@ -37,27 +41,49 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th> Imagem</th>
+                                    <th> Produto</th> 
+                                    <th> Qauntidade</th>
+                                    <th> Valor</th>
+                                    <th>Opções</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($produtos as $produto)
+                                @foreach (Session::get('itens') as $k => $produto)
                                     <tr>
-                                        <td>{{$produto->nome}}</td>
+                                        <td>{{ $produto['nome'] }}</td>
+                                        <td>{{ $produto['quantidade'] }}</td>
+                                        <td>{{ $produto['preco'] }}</td>
+                                        <td>
+                                            <a class="btn btn-outline-success md-6" href="{{ route('item.editar', ['produto_id'=>$k]) }}">Editar</a>
+                                            <a class="btn btn-outline-danger md-6" href="{{ route('item.excluir', ['produto_id'=>$k]) }}">Remover</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="pagination justify-content-center">
-                            {!! $produtos->links() !!}
-                        </div>
                     </div>
                     
-                    <form action="POST" action="/cadastrarVenda">
+                    <form method="POST" action="/cadastrarVenda">
                         @csrf
+                        <div class="row">
+                            <div class="col-1">
+                                <label for="Cliente" class="col-form-label">{{ __('Cliente:') }}</label>
+                            </div>
+                            <div class="col-6">
+                                <select id="cliente_id" name="cliente_id" class="form-control">
+                                    @foreach ($clientes as $cliente)
+                                        <option value={{$cliente->id}}>{{ $cliente->nome }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="fiado" name="fiado">
+                                <label class="custom-control-label" for="fiado">Fiado</label>
+                            </div>
+                        </div>
                         <div class="btn col-md-12">
                             <button type="submit" class="btn btn-success md-6">Finalizar</button>
-                            <button type="submit" class="btn btn-danger md-6">Finalizar</button>
+                            <a class="btn btn-danger md-6" href="{{ route('home') }}">Cancelar</a>
                         </div>
                     </form>
                 </div>
