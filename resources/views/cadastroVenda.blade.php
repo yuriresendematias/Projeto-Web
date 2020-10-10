@@ -1,49 +1,101 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <title>Cadastro Venda</title>
-    </head>
-    <body>
-        <h1>Cadastrar Venda</h1>
-        <form action="/cadastrarVenda" method="post">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+@extends('layouts.app')
 
-            Valor total: <input id="total" type="text" name="total" class="form-control @error('total') is-invalid @enderror" value="{{ old('total') }}" required autofocus />
+@section('content')
 
-            Data: <input id="data" type="text" name="data" class="form-control @error('data') is-invalid @enderror" value="{{ old('data') }}" required autofocus />
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">{{ __('Nova Venda') }}</div>
+                <div class="card-body">
+                    <form method="POST" action="/adicionarItemVenda">
+                        @csrf
 
-            Fiado: <input id="fiado" type="text" name="fiado" class="form-control @error('fiado') is-invalid @enderror" value="{{ old('fiado') }}" required autofocus />
+                        <div class="form-group col-12">
+                            <div class="row">
+                                <div class="col-1">
+                                    <label for="Produto" class="col-form-label">{{ __('Produto:')}}</label>
+                                </div>
+                                <div class="col-6">
+                                    <select id="produto_id" class="form-control" name="produto_id">
+                                        @foreach ($produtos as $produto)
+                                            <option value="{{$produto->id}}">{{$produto->nome}} 
+                                                                            ( quantidade = {{$produto->quantidade}}
+                                                                            / validade = {{$produto->validade}})</option>
+                                        @endforeach                              
+                                    </select>
+                                </div>
+                                <div class="col-1">
+                                    <label for="quantidade" class="col-form-label">Quantidade: </label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" class="form-control col-7" name="quantidade">
+                                </div>
+                                
+                                <button type="submit" class="btn btn-outline-success">Adicionar</button>
+                            </div>
+                        </div>
+                    </form>
 
-            Funcionario_id: <input id="funcionario_id" type="text" name="funcionario_id" class="form-control @error('funcionario_id') is-invalid @enderror" value="{{ old('funcionario_id') }}" required autofocus />
+                    <div class="card col-md-12">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th> Produto</th> 
+                                    <th> Qauntidade</th>
+                                    <th> Valor</th>
+                                    <th>Opções</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Session::get('itens') as $k => $produto)
+                                    <tr>
+                                        <td>{{ $produto['nome'] }}</td>
+                                        <td>{{ $produto['quantidade'] }}</td>
+                                        <td>{{ $produto['preco'] }}</td>
+                                        <td>
+                                            <a class="btn btn-outline-success md-6" href="{{ route('item.editar', ['produto_id'=>$k]) }}">Editar</a>
+                                            <a class="btn btn-outline-danger md-6" href="{{ route('item.excluir', ['produto_id'=>$k]) }}">Remover</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <form method="POST" action="/cadastrarVenda">
+                        @csrf
+                        <div class="row">
+                            <div class="col-1">
+                                <label for="Cliente" class="col-form-label">{{ __('Cliente:') }}</label>
+                            </div>
+                            <div class="col-6">
+                                <select id="cliente_id" name="cliente_id" class="form-control">
+                                    @foreach ($clientes as $cliente)
+                                        <option value={{$cliente->id}}>{{ $cliente->nome }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="fiado" name="fiado">
+                                <label class="custom-control-label" for="fiado">Fiado</label>
+                            </div>
+                        </div>
+                        <div class="btn col-md-12">
+                            <button type="submit" class="btn btn-success md-6">Finalizar</button>
+                            <a class="btn btn-danger md-6" href="{{ route('home') }}">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-            Cliente_id: <input id="cliente_id" type="text" name="cliente_id" class="form-control @error('cliente_id') is-invalid @enderror" value="{{ old('cliente_id') }}" required autofocus />
+@endsection
 
-            @error('total')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-            @error('data')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-            @error('fiado')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-            @error('funcionario_id')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-            @error('cliente_id')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-            <input type="submit" value="Cadastrar" />
-        </form>
-    </body>
-</html>
+
+
+
+
+

@@ -26,7 +26,6 @@ class VendaFactory extends Factory
     public function definition()
     {
         return [
-            'data' => $this->faker->dateTime,
             'total' => $this->faker->randomFloat(2, 0, 200),
             'fiado' => $this->faker->boolean(30),
             'funcionario_id' => $this->faker->numberBetween(1, 10),
