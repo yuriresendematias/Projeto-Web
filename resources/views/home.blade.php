@@ -13,8 +13,15 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
                     {{ __('You are logged in!') }}
+
+                    <div class="form-group row mb-0">
+                        <div class="col-md-8 offset-md-4">
+                            <a href="/listaClientes" class="btn btn-primary">Clientes</a>
+                            <a href="/listaProdutos" class="btn btn-primary">Produtos</a>
+                            <a href="/listaVendas" class="btn btn-primary">Vendas</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

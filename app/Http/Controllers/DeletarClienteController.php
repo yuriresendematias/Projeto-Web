@@ -11,7 +11,8 @@ class DeletarClienteController extends Controller
 {
     public function deletar($id){
         $cliente = Cliente::findOrFail($id);
-        return view('/deletarCliente', ['cliente' => $cliente]);
+        $endereco = Cliente::with('endereco')->findOrFail($id)->endereco;
+        return view('/deletarCliente', ['cliente' => $cliente, 'endereco' => $endereco]);
     }
 
     public function excluir($id) {

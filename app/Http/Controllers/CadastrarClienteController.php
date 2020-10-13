@@ -15,8 +15,14 @@ class CadastrarClienteController extends Controller
     public function cadastrar(Request $request){
         try {
             \App\Validator\ClienteValidator::validate($request->all());
-            $dados = $request->all();
-            \App\Models\Cliente::create($dados);
+            \App\Validator\EnderecoValidator::validate($request->all());
+
+            $cliente = $request->all();
+            $cliente = \App\Models\Cliente::create($cliente);
+            $cliente_id = $cliente->id;
+
+            $cliente->endereco()->create($request->all());
+
             return redirect("/listaClientes");
         } catch(\App\Validator\ValidationException $exception) {
             return redirect('cadastrarCliente')->withErrors($exception->getValidator())->withInput();

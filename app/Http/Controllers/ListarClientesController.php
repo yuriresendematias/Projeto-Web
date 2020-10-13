@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Cliente;
+use App\Models\Endereco;
 
 class ListarClientesController extends Controller
 {
@@ -13,8 +14,11 @@ class ListarClientesController extends Controller
         return view('listaClientes', ['clientes' => $clientes]);
     }
 
+    //$quotes = Persona::with('quotes')->find($id)->quotes;
+
     public function exibir($id) {
         $cliente = Cliente::findOrFail($id);
-        return view('exibirCliente', ['cliente' => $cliente]);
+        $endereco = Cliente::with('endereco')->findOrFail($id)->endereco;
+        return view('exibirCliente', ['cliente' => $cliente, 'endereco' => $endereco]);
     }
 }

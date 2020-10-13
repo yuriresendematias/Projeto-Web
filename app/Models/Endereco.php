@@ -21,7 +21,7 @@ class Endereco extends Model
         'bairro' => 'required|min:5|max:30',
         'cidade' => 'required|min:5|max:30',
         'pontoReferencia' => 'required|min:5|max:30',
-        'cliente_id' => 'required',
+        //'cliente_id' => 'required',
     ];
 
     public static $messages = [
@@ -30,6 +30,6 @@ class Endereco extends Model
         'bairro.*' => 'Bairro é obrigatório e deve ter entre 5 e 30 caracteres',
         'cidade.*' => 'Cidade é obrigatória e deve ter entre 5 e 30 caracteres',
         'pontoReferencia.*' => 'Ponto de Referência é obrigatório e deve ter entre 5 e 30 caracteres',
-        'cliente_id.*' => 'Endereço deve estar relacionado a um Cliente',
+        //'cliente_id.*' => 'Endereço deve estar relacionado a um Cliente',
     ];
 }

@@ -17,6 +17,13 @@
                                 <label>{{ $cliente->nome }}</label><br/>
                                 <label>{{ $cliente->telefone }}</label><br/>
                                 <label>{{ $cliente->dataNascimento }}</label>
+                                <br/>
+                                <br/>
+                                <label>{{ $endereco->logradouro }}</label><br/>
+                                <label>{{ $endereco->numero }}</label><br/>
+                                <label>{{ $endereco->bairro }}</label><br/>
+                                <label>{{ $endereco->cidade }}</label><br/>
+                                <label>{{ $endereco->pontoReferencia }}</label><br/>
                             </div>
                             <div class="col-md-8 offset-md-4">
                                 <input type="submit" value="Confirmar" class="btn btn-danger" />
