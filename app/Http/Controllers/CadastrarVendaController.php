@@ -96,6 +96,8 @@ class CadastrarVendaController extends Controller
                 $produto->save();
             }
 
+
+            $request->session()->flush();                               //remove todos os elementos da session
             return redirect("/listaVendas");
 
         }catch(\App\Validator\ValidationException $exception){
@@ -109,5 +111,10 @@ class CadastrarVendaController extends Controller
             }
             return redirect('cadastrarVenda')->withErrors($exception->getValidator())->withInput();
         }
+    }
+
+    public function cancelar(){
+        Session::flush();
+        return redirect("/home");
     }
 }
