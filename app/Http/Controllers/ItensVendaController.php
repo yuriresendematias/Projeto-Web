@@ -45,7 +45,7 @@ class ItensVendaController extends Controller
     /**
      * Redireciona para a view de editar um item do pedido
      */
-    public function editarItem(Request $request, $produto_id){
+    public function editarItem($produto_id){
         return view('editarItemVenda')->with(['id'=>$produto_id]);
     }
 

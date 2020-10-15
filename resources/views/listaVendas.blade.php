@@ -13,7 +13,6 @@
                                 <th> Cliente</th> 
                                 <th> Valor  </th>
                                 <th> Data   </th>
-                                <th> Pago   </th>
                                 <th> Opções </th>
                             </tr>
                         </thead>
@@ -23,11 +22,9 @@
                                 <td>{{ $venda->cliente_id }}</td>
                                 <td>{{ $venda->total }}</td>
                                 <td>{{ $venda->created_at }}</td>
-                                <td>{{ !$venda->fiado }}</td>
                                 <td>
-                                    <a class="btn btn-outline-info md-6" href="#">Exibir</a>
-                                    <a class="btn btn-outline-primary md-6" href=" # ">Editar</a>
-                                    <a class="btn btn-outline-danger md-6" href="#">Remover</a>
+                                    <a class="btn btn-outline-info" href="{{ route('venda.exibir', ['venda_id'=>$venda->id]) }}">Exibir</a>
+                                    <a class="btn btn-outline-danger" href="{{ route('venda.deletar', ['id' => $venda->id]) }}">Remover</a>
                                 </td>
                             </tr>
                             @endforeach

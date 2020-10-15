@@ -27,7 +27,9 @@ use App\Http\Controllers\CadastrarEnderecoController as CadastrarEndereco;
 use App\Models\Venda;
 use App\Http\Controllers\ListarVendasController as ListarVendas;
 use App\Http\Controllers\CadastrarVendaController as CadastrarVenda;
+use App\Http\Controllers\ExibirVendaController as ExibirVenda;
 use App\Http\Controllers\ItensVendaController as ItensVenda;
+use App\Http\Controllers\DeletarVendaController as DeletarVenda;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +83,10 @@ Route::middleware('auth')->group(function(){
     Route::get('/cadastrarVenda', [CadastrarVenda::class, 'criar'])->name('venda.cadastrar');
     Route::get('/listaVendas', [ListarVendas::class, 'listar']);
     Route::post('/cadastrarVenda', [CadastrarVenda::class, 'cadastrar']);
+    Route::get('/exibirVenda/{venda_id}', [ExibirVenda::class, 'exibir'])->name('venda.exibir');
+    Route::get('/cancelarVenda', [CadastrarVenda::class, 'cancelar'])->name('venda.cancelar');
+    Route::get('/deletarVenda/{id}', [DeletarVenda::class, 'deletar'])->name('venda.deletar');
+    Route::post('/deletarVenda/{id}', [DeletarVenda::class, 'excluir'])->name('venda.remover');
 
     //itens da venda
     Route::post('/adicionarItemVenda', [ItensVenda::class, 'adicionarItem']);

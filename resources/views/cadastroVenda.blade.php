@@ -83,7 +83,7 @@
                         </div>
                         <div class="btn col-md-12">
                             <button type="submit" class="btn btn-success md-6">Finalizar</button>
-                            <a class="btn btn-danger md-6" href="{{ route('home') }}">Cancelar</a>
+                            <a class="btn btn-danger md-6" href="{{ route('venda.cancelar') }}">Cancelar</a>
                         </div>
                     </form>
                 </div>
