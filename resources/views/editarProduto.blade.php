@@ -8,17 +8,15 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Cadastrar Produto') }}</div>
-
-                    <div class="card-body">
-                        <form action="/cadastrarProduto" method="post">
+                    <div class="card-header">{{ __('Editar Produto') }}</div>
+                        <form action="/editarProduto/{{$produto->id}}" method="post">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             <div class="form-group row">
                                 <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="nome" type="text" name="nome" class="form-control @error('nome') is-invalid @enderror" value="{{ old('nome') }}" required autofocus placeholder="Ex: Coca-cola 2L" />
+                                    <input id="nome" type="text" name="nome" class="form-control @error('nome') is-invalid @enderror" value="{{ $produto->nome }}" required autofocus />
 
                                     @error('nome')
                                         <span class="invalid-feedback" role="alert">
@@ -29,10 +27,10 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="quantidade" class="col-md-4 col-form-label text-md-right">{{ __('Quantidade') }}</label>
+                                <label for="quantidade" class="col-md-4 col-form-label text-md-right">{{ __('quantidade') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="quantidade" type="text" name="quantidade" class="form-control @error('quantidade') is-invalid @enderror" value="{{ old('quantidade') }}" required autofocus placeholder="Ex: 10" />
+                                    <input id="quantidade" type="text" name="quantidade" class="form-control @error('quantidade') is-invalid @enderror" value="{{ $produto->quantidade }}" required autofocus />
 
                                     @error('quantidade')
                                         <span class="invalid-feedback" role="alert">
@@ -46,7 +44,7 @@
                                 <label for="validade" class="col-md-4 col-form-label text-md-right">{{ __('Validade') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="validade" type="text" name="validade" class="form-control @error('validade') is-invalid @enderror" value="{{ old('validade') }}" required autofocus placeholder="Ex: 2021-10-01" />
+                                    <input id="validade" type="text" name="validade" class="form-control @error('validade') is-invalid @enderror" value="{{ $produto->validade }}" required autofocus />
 
                                     @error('validade')
                                         <span class="invalid-feedback" role="alert">
@@ -60,7 +58,7 @@
                                 <label for="precoCompra" class="col-md-4 col-form-label text-md-right">{{ __('Preço de Compra') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="precoCompra" type="text" name="precoCompra" class="form-control @error('precoCompra') is-invalid @enderror" value="{{ old('precoCompra') }}" required autofocus placeholder="Ex: 3.50" />
+                                    <input id="precoCompra" type="text" name="precoCompra" class="form-control @error('precoCompra') is-invalid @enderror" value="{{ $produto->precoCompra }}" required autofocus placeholder="Ex: 3.50" />
 
                                     @error('precoCompra')
                                         <span class="invalid-feedback" role="alert">
@@ -74,7 +72,7 @@
                                 <label for="precoVenda" class="col-md-4 col-form-label text-md-right">{{ __('Preço de Venda') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="precoVenda" type="text" name="precoVenda" class="form-control @error('precoVenda') is-invalid @enderror" value="{{ old('precoVenda') }}" required autofocus placeholder="Ex: 5.00" />
+                                    <input id="precoVenda" type="text" name="precoVenda" class="form-control @error('precoVenda') is-invalid @enderror" value="{{ $produto->precoVenda }}" required autofocus placeholder="Ex: 5.00" />
 
                                     @error('precoVenda')
                                         <span class="invalid-feedback" role="alert">
@@ -86,7 +84,7 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
-                                    <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                                    <input type="submit" value="Editar" class="btn btn-primary" />
                                 </div>
                             </div>
                         </form>

@@ -14,8 +14,6 @@ class ListarClientesController extends Controller
         return view('listaClientes', ['clientes' => $clientes]);
     }
 
-    //$quotes = Persona::with('quotes')->find($id)->quotes;
-
     public function exibir($id) {
         $cliente = Cliente::findOrFail($id);
         $endereco = Cliente::with('endereco')->findOrFail($id)->endereco;

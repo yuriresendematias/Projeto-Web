@@ -17,6 +17,8 @@ use App\Http\Controllers\CadastrarFuncionarioController as CadastrarFuncionario;
 use App\Models\Produto;
 use App\Http\Controllers\ListarProdutosController as ListarProdutos;
 use App\Http\Controllers\CadastrarProdutoController as CadastrarProduto;
+use App\Http\Controllers\EditarProdutoController as EditarProduto;
+use App\Http\Controllers\DeletarProdutoController as DeletarProduto;
 
 use App\Models\Endereco;
 use App\Http\Controllers\ListarEnderecosController as ListarEnderecos;
@@ -62,8 +64,13 @@ Route::middleware('auth')->group(function(){
 
     //Produto
     Route::get('/listaProdutos', [ListarProdutos::class, 'listar']);
+    Route::get('/produto/{id}', [ListarProdutos::class, 'exibir']);
     Route::get('/cadastrarProduto', [CadastrarProduto::class, 'criar']);
     Route::post('/cadastrarProduto', [CadastrarProduto::class, 'cadastrar']);
+    Route::get('/editarProduto/{id}', [EditarProduto::class, 'editar']);
+    Route::post('/editarProduto/{id}', [EditarProduto::class, 'atualizar']);
+    Route::get('/deletarProduto/{id}', [DeletarProduto::class, 'deletar']);
+    Route::post('/deletarProduto/{id}', [DeletarProduto::class, 'excluir']);
 
     //Endereco
     Route::get('/listaEnderecos', [ListarEnderecos::class, 'listar']);
