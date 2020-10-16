@@ -17,6 +17,7 @@ class ListarClientesController extends Controller
     public function exibir($id) {
         $cliente = Cliente::findOrFail($id);
         $endereco = Cliente::with('endereco')->findOrFail($id)->endereco;
-        return view('exibirCliente', ['cliente' => $cliente, 'endereco' => $endereco]);
+        $vendas = Cliente::with('vendas')->findOrFail($id)->vendas;
+        return view('exibirCliente', ['cliente' => $cliente, 'endereco' => $endereco, 'vendas' => $vendas]);
     }
 }

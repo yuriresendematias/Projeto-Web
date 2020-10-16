@@ -42,9 +42,7 @@ use App\Http\Controllers\DeletarVendaController as DeletarVenda;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 
 
