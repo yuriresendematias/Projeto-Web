@@ -97,7 +97,7 @@ class CadastrarVendaController extends Controller
             }
 
 
-            $request->session()->flush();                               //remove todos os elementos da session
+            $request->session()->pull('itens');                               //remove todos os elementos da session
             return redirect("/listaVendas");
 
         }catch(\App\Validator\ValidationException $exception){
@@ -114,7 +114,8 @@ class CadastrarVendaController extends Controller
     }
 
     public function cancelar(){
-        Session::flush();
+
+        Session::pull('itens');
         return redirect("/home");
     }
 }
