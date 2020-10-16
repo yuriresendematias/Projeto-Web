@@ -9,7 +9,7 @@ use App\Models\Funcionario;
 class ListarFuncionariosController extends Controller
 {
     public function listar() {
-        $funcionarios = Funcionario::all();
+        $funcionarios = Funcionario::orderby('nome')->paginate(10);
         return view('listaFuncionarios', ['funcionarios' => $funcionarios]);
     }
 }

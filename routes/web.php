@@ -12,6 +12,11 @@ use App\Http\Controllers\DeletarClienteController as DeletarCliente;
 use App\Models\Funcionario;
 use App\Http\Controllers\ListarFuncionariosController as ListarFuncionarios;
 use App\Http\Controllers\CadastrarFuncionarioController as CadastrarFuncionario;
+use App\Http\Controllers\ExibirFuncionarioController as ExibirFuncionario;
+use App\Http\Controllers\DeletarFuncionarioController as DeletarFuncionario;
+use App\Http\Controllers\EditarFuncionarioController as EditarFuncionario;
+
+
 
 
 use App\Models\Produto;
@@ -51,6 +56,13 @@ Route::middleware('auth')->group(function(){
     Route::get('/listaFuncionarios', [ListarFuncionarios::class, 'listar']);
     Route::get('/cadastrarFuncionario', [CadastrarFuncionario::class, 'criar']);
     Route::post('/cadastrarFuncionario', [CadastrarFuncionario::class, 'cadastrar']);
+    Route::get('exibirFuncionario/{funcionario_id}', [ExibirFuncionario::class, 'exibir'])->name('funcionario.exibir');
+    Route::get('/deletarFuncionario/{id}', [DeletarFuncionario::class, 'deletar'])->name('funcionario.deletar');
+    Route::post('/deletarFuncionario/{id}', [DeletarFuncionario::class, 'excluir'])->name('funcionario.remover');
+    Route::get('/editarFuncionario/{id}', [EditarFuncionario::class, 'editar'])->name('funcionario.editar');
+    Route::post('/editarFuncionario/{id}', [EditarFuncionario::class, 'atualizar'])->name('funcionario.atualizar');
+
+
 
     //Cliente
     Route::get('/listaClientes', [ListarClientes::class, 'listar']);
