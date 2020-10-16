@@ -20,6 +20,7 @@
                             <a href="/listaClientes" class="btn btn-primary">Clientes</a>
                             <a href="/listaProdutos" class="btn btn-primary">Produtos</a>
                             <a href="/listaVendas" class="btn btn-primary">Vendas</a>
+                            <a href="/listaFuncionarios" class="btn btn-primary">Funcionarios</a>
                         </div>
                     </div>
                 </div>

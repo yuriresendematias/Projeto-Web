@@ -22,6 +22,12 @@ class Funcionario extends Authenticatable
         'password' => 'required|string|min:8|confirmed',
     ];
 
+    public static $rules_update = [
+        'nome' => 'required|min:5|max:100',
+        'cpf' => 'required|size:11',
+        'email' => 'required|email:rfc',
+    ];
+
     public static $messages = [
         'nome.*' => 'Nome é obrigatório e deve ter entre 5 e 100 caracteres',
         'cpf.*' => 'CPF inválido',
