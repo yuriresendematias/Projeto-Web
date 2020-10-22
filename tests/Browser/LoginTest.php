@@ -28,7 +28,7 @@ class LoginTest extends DuskTestCase
                     ->screenshot('login')
                     ->press('Login')
                     ->screenshot('dasboard')
-                    ->assertPathIs('/home');
+                    ->assertPathIs('/');
 
         });
     }
