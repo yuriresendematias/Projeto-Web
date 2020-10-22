@@ -24,6 +24,11 @@ class ProdutosVenda extends Model
         'venda_id' => 'required',
     ];
 
+    public static $rules_add = [
+        'quantidade' => 'required|gt:0',
+        'produto_id' => 'required',
+    ];
+
     public static $messages = [
         'quantidade.*' => 'A quantidade do produto tem que ser pelo menos 1',
         'produto_id'   => 'Um funcionario deve esta vinculado a venda',

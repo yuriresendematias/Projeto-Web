@@ -11,4 +11,12 @@ class ProdutosVendaValidator {
         }
         return $validator;
     }
+
+    public static function validate_add($data) {
+        $validator = Validator::make($data, \App\Models\ProdutosVenda::$rules_add, \App\Models\ProdutosVenda::$messages);
+        if(!$validator->errors()->isEmpty()){
+            throw new ValidationException($validator, "Erro ao adicionar item");
+        }
+        return $validator;
+    }
 }

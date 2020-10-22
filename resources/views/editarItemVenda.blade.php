@@ -12,12 +12,17 @@
                     
                         <input type="hidden" name="produto_id" value="{{ $id }}" />
 
-                        <div class="row justify-content-center">
+                        <div class="form-group row justify-content-center">
                             <div class="col-0">
                                 <label for="quantidade" class="col-form-label">Quantidade: </label>
                             </div>
                             <div class="col-2">
-                                <input type="text" class="form-control" name="quantidade">
+                                <input type="text" class="form-control @error('quantidade') is-invalid @enderror" name="quantidade" required autofocus >
+                                @error('quantidade')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-outline-success md-6">Editar</button>
