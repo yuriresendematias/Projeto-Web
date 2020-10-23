@@ -16,8 +16,7 @@ use App\Http\Controllers\ExibirFuncionarioController as ExibirFuncionario;
 use App\Http\Controllers\DeletarFuncionarioController as DeletarFuncionario;
 use App\Http\Controllers\EditarFuncionarioController as EditarFuncionario;
 
-
-
+use App\Http\Controllers\RelatorioController;
 
 use App\Models\Produto;
 use App\Http\Controllers\ListarProdutosController as ListarProdutos;
@@ -73,6 +72,12 @@ Route::middleware('can:ativo,App\Models\Funcionario')->group(function(){
     Route::post('/editarCliente/{id}', [EditarCliente::class, 'atualizar']);
     Route::get('/deletarCliente/{id}', [DeletarCliente::class, 'deletar']);
     Route::post('/deletarCliente/{id}', [DeletarCliente::class, 'excluir']);
+
+
+    //Relatório
+    Route::get('/filtrarRelatorio', [RelatorioController::class, 'filtrar']);
+    Route::post('/relatorio', [RelatorioController::class, 'exibir']);
+    Route::get('/relatorio', [RelatorioController::class, 'exibir']);
 
     //Produto
     Route::get('/listaProdutos', [ListarProdutos::class, 'listar']);

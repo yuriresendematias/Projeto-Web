@@ -33,7 +33,7 @@
                                 <label for="telefone" class="col-md-4 col-form-label text-md-right">{{ __('Telefone') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="telefone" type="text" name="telefone" class="form-control @error('telefone') is-invalid @enderror" value="{{ old('telefone') }}" required autofocus placeholder="Ex: 888888888" />
+                                    <input id="telefone" type="text"  name="telefone" class="form-control @error('telefone') is-invalid @enderror" value="{{ old('telefone') }}" required autofocus placeholder="Ex: 888888888" />
 
                                     @error('telefone')
                                         <span class="invalid-feedback" role="alert">
@@ -47,7 +47,7 @@
                                 <label for="dataNascimento" class="col-md-4 col-form-label text-md-right">{{ __('Data de Nascimento') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="dataNascimento" type="text" name="dataNascimento" class="form-control @error('dataNascimento') is-invalid @enderror" value="{{ old('dataNascimento') }}" required autofocus placeholder="Ex: 1999-01-01" />
+                                    <input id="dataNascimento" type="date" name="dataNascimento" class="form-control @error('dataNascimento') is-invalid @enderror" value="{{ old('dataNascimento') }}" required autofocus placeholder="Ex: 1999-01-01" />
 
                                     @error('dataNascimento')
                                         <span class="invalid-feedback" role="alert">

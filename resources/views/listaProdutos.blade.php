@@ -43,7 +43,9 @@
                                     <a class="btn btn-outline-info md-6" href="/produto/{{ $produto->id }}">Exibir</a>
                                     @can('cadastrar', \App\Models\Funcionario::class)
                                         <a class="btn btn-outline-primary md-6" href="/editarProduto/{{ $produto->id }}">Editar</a>
-                                        <a class="btn btn-outline-danger md-6" href="/deletarProduto/{{ $produto->id }}">Remover</a>
+                                        <?php if($produto->quantidade > 0) : ?>
+                                            <a class="btn btn-outline-danger md-6" href="/deletarProduto/{{ $produto->id }}">Remover</a>
+                                        <?php endif; ?>
                                     @endcan
                                     </td>
                             </tr>

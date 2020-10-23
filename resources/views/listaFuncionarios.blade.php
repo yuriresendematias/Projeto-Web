@@ -4,12 +4,14 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12 card">
-                <div class="card-header row justify-content-center">{{ __('Funcionários') }}</div>
+
+                <div class="card-header row justify-content-center">{{ __('Lista de Funcionários') }}</div>
+                
                 <div class="card-body">
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th> Funcionario</th> 
+                                <th> Funcionário</th>
                             </tr>
                         </thead>
                         <tbody>
