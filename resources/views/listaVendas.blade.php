@@ -5,12 +5,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12 card">
-                <div class="card-header row justify-content-center">{{ __('Lista de Venda') }}</div>
+                <div class="card-header row justify-content-center">{{ __('Lista de Vendas') }}</div>
                 <div class="card-body">
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th> Cliente</th> 
+                                <th> Cliente</th>
                                 <th> Valor  </th>
                                 <th> Data   </th>
                                 <th> Opções </th>

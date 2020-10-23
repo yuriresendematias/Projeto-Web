@@ -14,7 +14,9 @@ class DeletarProdutoController extends Controller
 
     public function excluir($id) {
         $produto = produto::findOrFail($id);
-        $produto->delete();
+        $produto->update([
+            'quantidade' => 0,
+        ]);
 
         return redirect('/listaProdutos');
     }

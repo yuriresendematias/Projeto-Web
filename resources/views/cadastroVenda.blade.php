@@ -19,19 +19,19 @@
                                 <div class="col-6">
                                     <select id="produto_id" class="form-control" name="produto_id">
                                         @foreach ($produtos as $produto)
-                                            <option value="{{$produto->id}}">{{$produto->nome}} 
+                                            <option value="{{$produto->id}}">{{$produto->nome}}
                                                                             ( quantidade = {{$produto->quantidade}}
                                                                             / validade = {{$produto->validade}})</option>
-                                        @endforeach                              
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-1">
                                     <label for="quantidade" class="col-form-label">Quantidade: </label>
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" class="form-control col-7" name="quantidade">
+                                    <input type="number" min="1" class="form-control col-7" name="quantidade">
                                 </div>
-                                
+
                                 <button type="submit" class="btn btn-outline-success">Adicionar</button>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th> Produto</th> 
+                                    <th> Produto</th>
                                     <th> Qauntidade</th>
                                     <th> Valor</th>
                                     <th>Opções</th>
@@ -62,7 +62,7 @@
                             </tbody>
                         </table>
                     </div>
-                    
+
                     <form method="POST" action="/cadastrarVenda">
                         @csrf
                         <div class="row">

@@ -19,7 +19,9 @@
 
                         <div class="form-group row d-flex justify-content-end">
                             <a class="btn btn-primary col-md-3 mr-3" href="/editarProduto/{{ $produto->id }}">Editar</a>
-                            <a class="btn btn-danger col-md-3" href="/deletarProduto/{{ $produto->id }}">Deletar</a>
+                            <?php if($produto->quantidade > 0) : ?>
+                                <a class="btn btn-danger col-md-3" href="/deletarProduto/{{ $produto->id }}">Deletar</a>
+                            <?php endif; ?>
                         </div>
                     </ul>
                     </div>
