@@ -18,9 +18,12 @@
                         <label>Preco de venda: R${{ $produto->precoVenda }}</label><br/>
 
                         <div class="form-group row d-flex justify-content-end">
-                            <a class="btn btn-primary col-md-3 mr-3" href="/editarProduto/{{ $produto->id }}">Editar</a>
-                            <a class="btn btn-danger col-md-3" href="/deletarProduto/{{ $produto->id }}">Deletar</a>
-                        </div>
+                            @can('cadastrar', \App\Models\Funcionario::class)
+                                <a class="btn btn-primary col-md-3 mr-3" href="/editarProduto/{{ $produto->id }}">Editar</a>
+                                <a class="btn btn-danger col-md-3" href="/deletarProduto/{{ $produto->id }}">Deletar</a>
+                            @endcan
+                            <a class="btn btn-outline-primary md-6" href={{ URL::previous() }}>Voltar</a>
+                            </div>
                     </ul>
                     </div>
                 </div>

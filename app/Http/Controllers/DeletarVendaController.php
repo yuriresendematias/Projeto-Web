@@ -10,10 +10,14 @@ use Illuminate\Http\Request;
 class DeletarVendaController extends Controller
 {
     public function deletar($id){
+        $this->authorize("cadastrar", \App\Models\Funcionario::class);
+
         return view('deletarVenda')->with(['id'=> $id]);
     }
 
     public function excluir($id){
+        $this->authorize("cadastrar", \App\Models\Funcionario::class);
+
         $venda = Venda::find($id);
         $lista_itens = ProdutosVenda::where('venda_id', '=', $id)->get();
 

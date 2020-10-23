@@ -11,14 +11,14 @@ class FuncionarioTest extends TestCase
 {
     public function testFuncionarioNaoLogadoNaoPodeVerAListaDeClietes()
     {
-        $response = $this->get('/listaClientes')->assertRedirect('/login');
+        $this->get('/listaClientes')->assertStatus(403);
     }
 
     public function testFuncionarioLogadoPodeVerAListaDeClietes()
     {
         $funcionario = Funcionario::factory()->make();
+        $funcionario->ativo = true;
         $funcionario->save();
-        $funcionario = Funcionario::all()->first();
         $response = $this->actingAs($funcionario)->get('/listaClientes')->assertStatus(200);
     }
 

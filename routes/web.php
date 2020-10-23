@@ -51,7 +51,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 
 
-Route::middleware('auth')->group(function(){
+Route::middleware('can:ativo,App\Models\Funcionario')->group(function(){
     //Funcionário
     Route::get('/listaFuncionarios', [ListarFuncionarios::class, 'listar']);
     Route::get('/cadastrarFuncionario', [CadastrarFuncionario::class, 'criar']);
@@ -103,9 +103,12 @@ Route::middleware('auth')->group(function(){
     Route::get('/editarItemVenda/{produto_id}', [ItensVenda::class, 'editarItem'])->name('item.editar');
     Route::post('/editarItemVenda/{produto_id}', [ItensVenda::class, 'atualizarItem'])->name('item.atualizar');
     Route::get('/excluirItemVenda/{produto_id}', [ItensVenda::class, 'removerItem'])->name('item.excluir');
+
+    //home
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 });
 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

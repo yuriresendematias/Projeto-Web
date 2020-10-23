@@ -24,7 +24,9 @@
                                 <td>{{ $venda->created_at }}</td>
                                 <td>
                                     <a class="btn btn-outline-info" href="{{ route('venda.exibir', ['venda_id'=>$venda->id]) }}">Exibir</a>
-                                    <a class="btn btn-outline-danger" href="{{ route('venda.deletar', ['id' => $venda->id]) }}">Remover</a>
+                                    @can('cadastrar', \App\Models\Funcionario::class)
+                                        <a class="btn btn-outline-danger" href="{{ route('venda.deletar', ['id' => $venda->id]) }}">Remover</a>
+                                    @endcan
                                 </td>
                             </tr>
                             @endforeach
@@ -33,6 +35,9 @@
                 </div>
         </div>
         {!! $vendas->links() !!}
+    </div>
+    <div class="row justify-content-center">
+        <a class="btn btn-outline-info" href="{{ route('home')}}">Home</a>
     </div>
 </div>
 

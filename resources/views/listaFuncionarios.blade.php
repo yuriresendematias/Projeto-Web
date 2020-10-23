@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12 card">
-                <div class="card-header row justify-content-center">{{ __('Lista de Venda') }}</div>
+                <div class="card-header row justify-content-center">{{ __('Funcionários') }}</div>
                 <div class="card-body">
                     <table class="table table-striped">
                         <thead>
@@ -18,7 +18,10 @@
                                 <td>{{ $funcionario->nome }}</td>
                                 <td>
                                     <a class="btn btn-outline-info" href="{{ route('funcionario.exibir', ['funcionario_id'=>$funcionario->id]) }}">Exibir</a>
-                                    <a class="btn btn-outline-danger" href="{{ route('funcionario.deletar', ['id' => $funcionario->id]) }}">Remover</a>
+                                    @can('cadastrar', \App\Models\Funcionario::class)
+                                        <a class="btn btn-outline-primary " href="/editarFuncionario/{{ $funcionario->id }}">Editar</a>
+                                        <a class="btn btn-outline-danger" href="{{ route('funcionario.deletar', ['id' => $funcionario->id]) }}">Remover</a>
+                                    @endcan
                                 </td>
                             </tr>
                             @endforeach
@@ -27,6 +30,10 @@
                 </div>
         </div>
         {!! $funcionarios->links() !!}
+    </div>
+    <div class="row justify-content-center">
+        <a class="btn btn-outline-info" href="{{ route('home')}}">Home</a>
+        
     </div>
 </div>
 @endsection

@@ -11,7 +11,7 @@ class CadastrarVendaTest extends DuskTestCase
 {
     public function testCadastrarVendaValida()
     {
-        $funcionario = Funcionario::first();
+        $funcionario = Funcionario::where('ativo', '=', true)->first();
         $this->browse(function ($browser) use ($funcionario) {
             $browser->visit('/login')
                     ->assertSee('Login')
@@ -30,14 +30,14 @@ class CadastrarVendaTest extends DuskTestCase
                     ->select('produto_id', 3)
                     ->select('cliente_id', 3)
                     ->press('Finalizar')
-                    //->pause(2000)
+                    ->pause(2000)
                     ->assertPathIs('/listaVendas');
         });
     }
 
     public function testCadastrarVendaComQuantidadeDeItemInvalida()
     {
-        $funcionario = Funcionario::first();
+        $funcionario = Funcionario::where('ativo', '=', true)->first();
         $this->browse(function ($browser) use ($funcionario) {
             $browser->visit('/cadastrarVenda')
                     ->assertSee('Nova Venda')

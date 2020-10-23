@@ -7,8 +7,10 @@
     <p>CPF:     {{$funcionario->cpf}}</p>
 
     <div class="btn col-12">
-        <a class="btn btn-outline-primary " href="/editarFuncionario/{{ $funcionario->id }}">Editar</a>
-        <a class="btn btn-outline-danger" href="/deletarFuncionario/{{ $funcionario->id }}">Deletar</a>
+        @can('cadastrar', \App\Models\Funcionario::class)
+            <a class="btn btn-outline-primary " href="/editarFuncionario/{{ $funcionario->id }}">Editar</a>
+            <a class="btn btn-outline-danger" href="/deletarFuncionario/{{ $funcionario->id }}">Deletar</a>
+        @endcan
         <a class="btn btn-outline-primary" href="/listaFuncionarios">Voltar</a>
     </div>
 </div>    

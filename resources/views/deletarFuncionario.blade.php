@@ -6,7 +6,7 @@
         @csrf
 
         <div class="row justify-content-center">
-            <h3>Tem certeza que deseja excluir este funcionário?</h3><br/>
+            <h3>Tem certeza que deseja desativar este funcionário?</h3><br/>
         </div>
         <div class="row justify-content-center">
             <p>{{$funcionario->nome}}</p>

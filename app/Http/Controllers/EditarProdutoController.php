@@ -8,11 +8,15 @@ use App\Models\Produto;
 class EditarProdutoController extends Controller
 {
     public function editar($id){
+        $this->authorize("cadastrar", \App\Models\Funcionario::class);
+
         $produto = Produto::findOrFail($id);
         return view('editarProduto', ['produto' => $produto]);
     }
 
     public function atualizar(Request $request, $id){
+        $this->authorize("cadastrar", \App\Models\Funcionario::class);
+
         try{
             \App\Validator\ProdutoValidator::validate($request->all());
 

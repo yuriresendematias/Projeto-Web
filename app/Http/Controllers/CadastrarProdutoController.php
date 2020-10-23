@@ -8,10 +8,14 @@ use App\Models\Produto;
 class CadastrarProdutoController extends Controller
 {
     public function criar(){
+        $this->authorize("cadastrar", \App\Models\Funcionario::class);
+
         return view('cadastroProduto');
     }
 
     public function cadastrar(Request $request){
+        $this->authorize("cadastrar", \App\Models\Funcionario::class);
+
         try {
             \App\Validator\ProdutoValidator::validate($request->all());
             $dados = $request->all();

@@ -41,9 +41,11 @@
                                 <td>R${{ $produto->precoVenda }}</td>
                                 <td>
                                     <a class="btn btn-outline-info md-6" href="/produto/{{ $produto->id }}">Exibir</a>
-                                    <a class="btn btn-outline-primary md-6" href="/editarProduto/{{ $produto->id }}">Editar</a>
-                                    <a class="btn btn-outline-danger md-6" href="/deletarProduto/{{ $produto->id }}">Remover</a>
-                                </td>
+                                    @can('cadastrar', \App\Models\Funcionario::class)
+                                        <a class="btn btn-outline-primary md-6" href="/editarProduto/{{ $produto->id }}">Editar</a>
+                                        <a class="btn btn-outline-danger md-6" href="/deletarProduto/{{ $produto->id }}">Remover</a>
+                                    @endcan
+                                    </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -51,6 +53,9 @@
                 </div>
         </div>
         {!! $produtos->links() !!}
+    </div>
+    <div class="row justify-content-center">
+        <a class="btn btn-outline-info" href="{{ route('home')}}">Home</a>
     </div>
 </div>
 

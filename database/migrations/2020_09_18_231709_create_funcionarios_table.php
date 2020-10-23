@@ -19,6 +19,8 @@ class CreateFuncionariosTable extends Migration
             $table->string('cpf', 11);
             $table->string('email', 50);
             $table->string('password');
+            $table->boolean('eh_gerente');
+            $table->boolean('ativo');
             $table->rememberToken();
             $table->timestamps();
         });

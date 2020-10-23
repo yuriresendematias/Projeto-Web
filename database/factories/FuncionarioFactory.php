@@ -30,6 +30,9 @@ class FuncionarioFactory extends Factory
             'email' => $this->faker->unique()->safeEmail,
             'password' => Hash::make('12341234'),
             'remember_token' => $this->faker->lexify('??????????'),
+            'eh_gerente' => (bool)rand(0,1),
+            'ativo' => (bool)rand(0,1),
+
         ];
     }
 }

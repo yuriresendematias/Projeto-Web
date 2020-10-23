@@ -12,7 +12,7 @@ class Funcionario extends Authenticatable
         return $this->hasMany('App\Models\Venda');
     }
 
-    protected $fillable = ['nome', 'cpf', 'email', 'password'];
+    protected $fillable = ['nome', 'cpf', 'email', 'password', 'eh_gerente'];
     protected $hidden = ['password', 'remember_token'];
 
     public static $rules = [
